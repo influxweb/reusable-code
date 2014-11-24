@@ -1,0 +1,80 @@
+$header-mobile-height: 50px;
+$header-desktop-height: 80px;
+$header-background: green;
+$header-nav-mobile-height: 140px;
+$header-nav-desktop-height: 180px;
+$header-nav-desktop-width: 400px;
+
+header {
+	height:$header-mobile-height;
+	background: $header-background;
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	width:100%;
+	z-index: 999;
+	overflow: hidden;
+	-webkit-transition: height 350ms ease;
+	-moz-transition: height 350ms ease;
+	transition: height 350ms ease;
+}
+
+.mainmenu {
+	display: block;
+	text-align: center;
+	opacity: 0;
+	height:$header-nav-mobile-height;
+	width:100%;
+	position: absolute;
+	top:50%;
+	margin-top:20px;
+	padding: 0 15px;
+	-webkit-transition: all 150ms 0ms ease;
+	-moz-transition: all 150ms 0ms ease;
+	transition: all 150ms 0ms ease;
+	z-index: 99;
+}
+
+header.active {height:100%;
+	
+	.mainmenu {
+		opacity: 1;
+		margin-top:-($header-nav-mobile-height / 2);
+	}
+	
+	.mainmenu {
+		-webkit-transition: all 350ms 100ms ease;
+		-moz-transition: all 350ms 100ms ease;
+		transition: all 350ms 100ms ease;
+	}
+	
+}
+
+@media (min-width: 500px){
+	
+	header {height:$header-desktop-height;}
+	
+	.menu-btn {
+		margin:20px 30px 0 0;
+		float: right;
+		width:80px;
+		text-indent: 0;
+	}
+
+	.mainmenu {
+		z-index: -9;
+		position: relative;
+		max-width: $header-nav-desktop-width;
+		margin-left:auto;
+		margin-right:auto;
+		height:$header-nav-desktop-height;
+	}
+	
+	header.active {
+		.mainmenu {margin-top:-($header-nav-desktop-height / 2);}
+	}
+}
+
+// Stop body scroll when menu is open 
+.menuopen {overflow: hidden;}
