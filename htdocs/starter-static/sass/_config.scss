@@ -1,0 +1,61 @@
+// ** Main Config
+
+// Type
+$bfont : sans-serif;
+$hfont : sans-serif;
+
+// Font Sizes
+$base-font-size: 16px;
+$sizebody : 100%;
+$sizeh1 : 21px;
+$sizeh2 : 21px;
+$sizeh3 : 21px;
+$sizeh4 : 21px;
+$sizeh5 : 21px;
+$sizeh6 : 21px;
+
+// Color
+$bodycolor : #666666;
+$headingcolor : #333333;
+
+// Layout & MQ's
+$maxwidth : 960px;
+$tabletmq : 768px;
+$desktopmq : 900px;
+$lgdesktopmq : 1170px;
+
+// Container
+$maxwidth : 750px;
+
+// ** Mixins
+// PX to EM converter
+@function em($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
+}
+
+// Clearfix - Usage: @include clearfix();
+@mixin clearfix() {
+    & {*zoom: 1;}
+    &:before,&:after {content: "";display: table;}
+    &:after {clear: both;}
+}
+
+// Vertical Align Anything
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// Opacity - Usage: @include opacity(0.8);
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie);
+}
+// Example Function - Usage: .my-module {padding: my-calculation-function(10px, 5px);}
+@function my-calculation-function($some-number, $another-number){
+  @return $some-number + $another-number
+}
