@@ -1,0 +1,96 @@
+// Animated Menu Button
+$menubtn-icon-color: black;
+$menubtn-icon-hover-color: blue;
+$menubtn-background-color: red;
+$menubtn-animation: all 0.4s ease;
+
+.menu-btn {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	background: transparent;
+	border: none;
+	vertical-align: middle;
+	padding: 10px;
+	margin: 0;
+	cursor: pointer;
+	-webkit-appearance:none;
+	&:focus {
+		outline: 0;
+	}
+	&:before {
+		content: '';
+		opacity: 0;
+		width: 0;
+		height: 0;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		background: transparent;
+		transform: translate(-50%, -50%);
+		transition: $menubtn-animation;
+	}
+	span {
+		display: block;
+		position: relative;
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+		}
+		&:before {
+			top: -8px;
+		}
+		&:after {
+			bottom: -8px;
+		}
+	}
+	span,
+	span:before,
+	span:after {
+		width: 100%;
+		height: 4px;
+		background: $menubtn-icon-color;
+		transition: $menubtn-animation;
+	}
+	&.is-active {
+		&:before {
+			opacity: 1;
+			width: 50px;
+			height: 50px;
+			background: $menubtn-background-color;
+		}
+		span {
+			background: transparent;
+			&:before {
+				top: 0;
+				transform: rotate(225deg);
+			}
+			&:after {
+				bottom: 0;
+				transform: rotate(-225deg);
+			}
+		}
+	}
+}
+@media (min-width: 900px) {
+	.menu-btn {
+		&:hover {
+			span,
+			span:before,
+			span:after {
+				background: $menubtn-icon-hover-color
+			}
+		}
+		&.is-active {
+			span {
+				background: transparent;
+				&:hover {
+					background: transparent;
+				}
+			}
+		}
+	}
+}
